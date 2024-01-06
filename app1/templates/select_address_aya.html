@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Address of Shippment </title>
+</head>
+<body>
+
+  <h2>Select Contry</h2>
+
+  <form method="post" action="{% url 'process_address_selection' %}">
+    {% csrf_token %}
+    <label for="address">Select Country:</label>
+    <select name="address" id="address">
+        <!-- Your address options here -->
+        <option value="address1">Canada</option>
+        <option value="address2">USA </option>
+        <option value="address2">World Wide! </option>
+    </select>
+    <button type="submit">Proceed with Order</button>
+</form>
+
+
+</body>
+</html>

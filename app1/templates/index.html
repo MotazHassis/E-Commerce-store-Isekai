@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">E-Commerce Isekai Shop!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
+<body>
+<div id="pdf">
+<div class="card" style="margin-left: 10%; margin-right: 10%;">
+    <div class="card-header bg-black"></div>
+    <div class="card-body">
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <i class="far fa-building text-danger fa-6x float-start"></i>
+          </div>
+        </div>
+  
+  
+        <div class="row">
+          <div class="col-xl-12">
+  
+            <ul class="list-unstyled float-end">
+              <li style="font-size: 30px; color: red;">Isekai Shop</li>
+              <li>palestine, Elm Street</li>
+              <li>123-456-789</li>
+              <li>Isekai@mail.com</li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="row text-center">
+          <h3 class="text-uppercase text-center mt-3" style="font-size: 40px;">Isekai</h3>
+          <p style="font-size: 15px; color: red;">Order Ref_Code : {{specific_order.ref_code}}</p>
+        </div>
+  
+        <div class="row mx-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for allitems in specific_order.items.all %}
+              <tr>
+                <td>{{allitems.item.title}}</td>
+                <td>{{allitems.quantity}}</td>
+                <td><i class="fas fa-dollar-sign"></i>{{allitems.item.price}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+  
+        </div>
+        <div class="row">
+
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xl-8 text-center">
+            <p class="float-end"
+              style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;">
+              Total:
+              <span><i class="fas fa-dollar-sign "></i> {{specific_order.total_payed_amount}}</span></p>
+          </div>
+  
+        </div>
+  
+        <div class="row mt-2 mb-5">
+          <p class="fw-bold">Date: <span class="text-muted">{{specific_order.start_date}}</span></p>
+          <p class="fw-bold mt-3">Signature:</p>
+        </div>
+  
+      </div>
+
+    </div>
+    <div class="card-footer bg-black"></div>
+  </div>
+</div>
+<button type="button" onclick="gen_pdf('pdf')" class="btn btn-primary btn-lg">Print Invoice</button>
+<a href="/">Back to Isekai</a>
+
+<script type="text/JavaScript">
+    function gen_pdf(invoice) {
+        var a = document.body.innerHTML;
+        var b = document.getElementById(invoice).innerHTML;
+        document.body.innerHTML=b;
+        window.print();
+    }
+
+</script>
+</body>

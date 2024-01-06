@@ -1,0 +1,4 @@
+.col-md-4{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,25 @@
+
+{% for items in search %}
+
+
+<li class="my-4">
+    <div class="
+        alert
+        fade
+        show
+        dropdown-item
+        p-1
+        m-0
+        d-flex
+        align-items-center
+        justify-content-between
+      " role="alert">
+      <div class="d-flex align-items-center">
+        <img src="{{items.item_image.url}}" alt="avatar" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover">
+        <a href="/product/{{items.id}}"><p class="m-0">{{items.title}}</p></a>
+        
+      </div>
+      <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </li>
+  {% endfor %}

@@ -1,0 +1,41 @@
+
+{% extends 'home.html' %}
+
+{% block content %}
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <h2>Mock Payment Form</h2>
+
+  <form id="payment-form">
+    <div id="card-element"></div>
+    <button id="submit">Pay Now</button>
+  </form>
+
+  <script>
+    var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+    var elements = stripe.elements();
+
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      stripe.confirmCardPayment('{{ session_id }}', {
+        payment_method: {
+          card: card,
+        },
+      }).then(function (result) {
+        if (result.error) {
+          // Show error to your customer
+          console.error(result.error.message);
+        } else {
+          // The payment succeeded
+          window.location.href = result.paymentIntent.charges.data[0].receipt_url;
+        }
+      });
+    });
+  </script>
+{% endblock %}
