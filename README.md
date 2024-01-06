@@ -45,6 +45,7 @@ div.WordSection1
 
 <p class=MsoNormal align=center style='text-align:center'><b><span
 style='font-size:20.0pt;line-height:107%'>Isekai Ecommerce Store</span></b></p>
+<a href="https://isekai.pythonanywhere.com/">visit Deployed version for this project</a>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:3.0in;margin-bottom:8.0pt;
 margin-left:3.0in'>&nbsp;</p>
